@@ -1,0 +1,32 @@
+Создать файл “new.json” - touch l2.json
+Проверяем статус - git status
+Добавить файл под гит -g it add l2.json
+Закоммитить файл- git commit -m 'мой первый комит'
+Отправить файл на внешний GitHub репозиторий - git push
+Создать файлы new2.json, new2.xml, new2.txt - touch new2.json new2.xml new2.txt
+Проверяем статус - git status
+Добавить файлы под гит - git add new2.json new2.xml new2.txt
+Проверяем статус- git status
+Закоммитить файлы - git commit -m 'my second commit'
+Отправить файлы на внешний GitHub репозиторий - git push
+Отредактировать содержание файла “new2.txt”  - vi new2.txt
+Отредактировать содержание файла “new2.json” - vi new2.json
+Добавить и закоммитить “new2.txt” одной строчкой - git add new2.txt; git commit -m "add and commit txt file"
+Добавить и закоммитить “new2.json” одной строчкой - git add new2.json; git commit -m "add and commit json file"
+Отправить изменения на внешний репозиторий - git push
+Отредактировать содержание файла “new2.xml” - написать информацию о себе  - vi new2.xml
+Добавить и закоммитить “new2.xml” одной строчкой - git add new2.xml; git commit -m "add and commit xml file"
+Отправить изменения на внешний репозиторий - git push
+Перенести файл в гит - cp ../../lesson .
+Отправить предыдущее домашнее задание по GitBush Terminal на внешний репозиторий - git add lesson; git commit -m"add first homework"
+Отправить изменения на внешний репозиторий - git push
+# пункты 21-23 сделала на Веб интерфейсе GitHub
+Синхронизировать внешний и локальный репозитории (слить изменения с внешнего репозитория) - git pull
+Отредактировать в веб интерфейсе содержание файла “new2.json” - edited new2.json 
+Закомитить изменения - committed changes
+Синхронизировать внешний и локальный репозитории - git pull
+Отредактировать в веб интерфейсе содержание файла “new2.xml” - edited new2.xml
+Закомитить изменения - committed changes
+Синхронизировать внешний и локальный репозитории - git pull
+
+

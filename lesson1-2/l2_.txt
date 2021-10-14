@@ -1,0 +1,26 @@
+1) pwd
+2) mkdir homework1
+3) cd homework1
+4) mkdir folder1 folder2 folder3
+5) cd folder2
+6) touch 1.txt 2.txt 1.json 2.json 3.txt
+7) mkdir folder4 folder5 folder6
+8. ls
+9) vi 1.txt
+10) i 
+10 continue) + написать туда что-нибудь, любой текст.
+11) ESC Shift+ZZ
+12) cd ..
+—
+13) mv folder2/*.json folder1
+14) cp folder2/1.txt folder1; cp folder2/2.txt folder1 
+15) find folder2/ -name ‘1.txt’
+16) grep -Ri ‘любой’ folder1/1.txt
+17) head -n1 folder1/1.txt
+18) tail -n1 folder1/1.txt
+19) less folder1/1.txt
+20) date
+
+nadin@barracuda-2 lesson % curl '162.55.220.72:5005/get_method?name=Nadin&age=41'
+["Nadin","41"]
+
