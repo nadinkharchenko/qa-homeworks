@@ -1,0 +1,444 @@
+{
+	"info": {
+		"_postman_id": "34b5433c-30d6-4ff4-a586-83e427810779",
+		"name": "Kharchenko Nadya HW5_Postman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Check status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body has string\"),function () {",
+							"    pm.expect(responseJson.name).to.be.a('string');",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "age",
+							"value": "20",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "salary",
+							"value": "2000",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/first",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"first"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Second user_info_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var salary = pm.environment.get(\"salary\");",
+							"var age = pm.environment.get(\"age\");",
+							"var name = pm.environment.get(\"name\");",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var responseJson = pm.response.json();",
+							"var requestJson = request.data;",
+							"",
+							"pm.test(\"Responce has parametr 'start_qa_salary'\", function () {",
+							"    pm.expect(responseJson).to.have.property(\"start_qa_salary\");",
+							"});",
+							"console.log(responseJson.start_qa_salary)",
+							"console.log(salary)",
+							"",
+							"pm.test(\"Responce has parametr 'qa_salary_after_6_months'\", function(){",
+							"    pm.expect(responseJson).to.have.property('qa_salary_after_6_months');",
+							"    });",
+							"",
+							" pm.test(\"Responce has parametr 'qa_salary_after_12_months'\", function(){",
+							"    pm.expect(responseJson).to.have.property('qa_salary_after_12_months');",
+							"});",
+							"",
+							"pm.test(\"Responce has parametr 'qa_salary_after_1.5_year'\",function(){",
+							"    pm.expect(responseJson).to.have.property('qa_salary_after_1.5_year');",
+							"});",
+							"",
+							"pm.test(\"Responce has parametr 'qa_salary_after_3.5_years'\",function(){",
+							"    pm.expect(responseJson).to.have.property('qa_salary_after_3.5_years');",
+							"});",
+							"",
+							"pm.test(\"Check response has parametr 'person'\", function(){",
+							"    pm.expect(responseJson).to.have.property(\"person\");",
+							"});",
+							"",
+							"pm.test(\"Check if 'start_qa_salary' = 'salary'request\", function(){",
+							"    pm.expect(responseJson.start_qa_salary).to.eq(parseInt(requestJson.salary));",
+							"});",
+							"",
+							"pm.test(\"Check if 'qa_salary_after_6' = 'salary*2'\", function(){",
+							"    pm.expect(responseJson.qa_salary_after_6_months).to.eq(parseInt(requestJson.salary*2));",
+							"});",
+							"",
+							"pm.test(\"Check if 'qa_salary_after_12' = 'salary*2.7'\", function(){",
+							"    pm.expect(responseJson.qa_salary_after_12_months).to.eq(parseInt(requestJson.salary*2.7));",
+							"});",
+							"",
+							"pm.test(\"Check if 'qa_salary_after_1.5_year' = 'salary*3.3'\", function(){",
+							"    pm.expect(responseJson[\"qa_salary_after_1.5_year\"]).to.eq(parseInt(requestJson.salary*3.3));",
+							"});",
+							"",
+							"pm.test(\"Check if 'qa_salary_after_3.5_years' = 'salary*3.8'\", function(){",
+							"    pm.expect(responseJson[\"qa_salary_after_3.5_years\"]).to.eq(parseInt(requestJson.salary*3.8));",
+							"});",
+							"",
+							"pm.test(\"Check if first element 'u_name;'person'='salary'\",function(){",
+							"    pm.expect(responseJson.person.u_name[1]).to.eq(parseInt(requestJson.salary));",
+							"});",
+							"",
+							"pm.test(\"Check 'u_age' = request 'age'\",function(){",
+							"    pm.expect(responseJson.person.u_age).to.eq(parseInt(requestJson.age));",
+							"});",
+							"console.log(responseJson.person.u_salary_5_years)",
+							"pm.test(\"Check if 'u_salary_5_years' = request'salary*4.2'\",function(){",
+							"    pm.expect(responseJson.person.u_salary_5_years).to.eq(parseInt(requestJson.salary*4.2));",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "{{name}}",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "{{age}}",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "{{salary}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/user_info_2",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Third user_info_3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var responseJSON = pm.response.json();",
+							"",
+							"pm.test(\"Check if name = name\", function () {",
+							"    pm.expect(responseJSON.name).to.eq(\"Nadya\");",
+							"});",
+							"",
+							"pm.test(\"Check if age = age\",function () {",
+							"    pm.expect(responseJSON.age).to.eq(\"41\");",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"pm.test(\"Check if salary =salary\", function(){",
+							"    pm.expect(responseJSON.salary).to.eq(1000);",
+							"})",
+							"var reqData = request.data;",
+							"",
+							"pm.test(\"Response 'name' same as request\", function () {",
+							"    pm.expect(responseJSON.name).to.eq(reqData.name);",
+							"});",
+							"",
+							"pm.test(\"Response'age' same as request\", function(){",
+							"    pm.expect(responseJSON.age).to.eq(reqData.age);",
+							"})",
+							"",
+							"console.log(responseJSON.family);",
+							"",
+							"var anonymousFunction = function() {",
+							"    pm.expect(responseJSON.age).to.eq(reqData.age);",
+							"}",
+							"",
+							"pm.test(\"u_salary_1_5_year = salary * 4\", function() {",
+							"    pm.expect(responseJSON.family.u_salary_1_5_year).to.eq(reqData.salary*4)",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Nadya",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "41",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "1000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Forth object_info_3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"console.log(pm.request.url.query.all())",
+							"",
+							"",
+							"var responseJson = pm.response.json();",
+							"var requestJson = pm.request.url.query.all()",
+							"console.log(requestJson[0])",
+							"",
+							"pm.test(\"Check 'name response' = 'name request'\", function(){",
+							"    pm.expect(responseJson.name).to.eq(requestJson[0].value);",
+							"});",
+							"",
+							"pm.test(\"Check 'response age' = 'request age'\", function(){",
+							"    pm.expect(responseJson.age).to.eq(requestJson[1].value);",
+							"});",
+							"",
+							"pm.test(\"Check 'response salary' = 'request salary\", function(){",
+							"    pm.expect(responseJson.salary).to.eq(+(requestJson[2].value));",
+							"});",
+							"",
+							"",
+							"",
+							"console.log(responseJson.family)",
+							"",
+							"pm.test(\"Check if parametr dog has name\", function(){",
+							"    pm.expect(responseJson.family.pets.dog).to.have.property(\"name\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Check if parametr dog has age\", function(){",
+							"    pm.expect(responseJson.family.pets.dog).to.have.property(\"age\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Check if parametr dog age  = 4\", function(){",
+							"    pm.expect(responseJson.family.pets.dog.age).to.eq(4);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}object_info_3?name=Nadya&age=41&salary=1000",
+					"host": [
+						"{{url}}object_info_3"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Nadya"
+						},
+						{
+							"key": "age",
+							"value": "41"
+						},
+						{
+							"key": "salary",
+							"value": "1000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fifth object_info_4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var responseJson = pm.response.json();",
+							"var requestJson = pm.request.url.query.all();",
+							"console.log(pm.request.url.query.all());",
+							"",
+							"pm.test(\"Check request name = response name\", function(){",
+							"   pm.expect(responseJson.name).to.eq(requestJson[0].value);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Check request age = response age\", function(){",
+							"   pm.expect(responseJson.age).to.eq(parseInt(requestJson[1].value));",
+							"});",
+							"",
+							"console.log(requestJson[2].value);",
+							"console.log(responseJson.salary);",
+							"console.log(responseJson.salary[0]);",
+							"console.log(responseJson.salary[1]);",
+							"console.log(responseJson.salary[2]);",
+							"",
+							"console.log(requestJson[2]);",
+							"",
+							"",
+							"console.log(responseJson);",
+							"pm.test(\"Check zeros element = request salary\", function(){",
+							"   pm.expect(responseJson.salary[0]).to.eq(parseInt(requestJson[2].value));",
+							"});",
+							"",
+							"pm.test(\"Check first element = request salary*2\",function(){",
+							"  pm.expect(parseInt(responseJson.salary[1])).to.eq(parseInt(requestJson[2].value) * 2);",
+							"});",
+							"",
+							"pm.test(\"Check second element = request salary*3\",function(){",
+							"  pm.expect(parseInt(responseJson.salary[2])).to.eq(parseInt(requestJson[2].value) * 3);",
+							"});",
+							"",
+							"pm.environment.set(\"name\", responseJson.name);",
+							"pm.environment.set(\"age\", responseJson.age);",
+							"pm.environment.set(\"salary\", responseJson.salary);",
+							"",
+							"for (var i = 0; i < responseJson.salary.lenght; i++){",
+							"    console.log (\"List elements = \",responseJson.salary)",
+							"};",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}object_info_4?name=Nadya&age=41&salary=1000",
+					"host": [
+						"{{url}}object_info_4"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Nadya"
+						},
+						{
+							"key": "age",
+							"value": "41"
+						},
+						{
+							"key": "salary",
+							"value": "1000"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
